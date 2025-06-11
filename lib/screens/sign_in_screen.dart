@@ -65,35 +65,51 @@ class _SignInScreenState extends State<SignInScreen> {
         backgroundColor: Colors.white,
       ),
       backgroundColor: Colors.white,
-      body: Padding(
-        padding: const EdgeInsets.all(24.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(
-              Icons.account_circle,
-              size: 80,
-              color: Theme.of(context).primaryColor,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(24.0),
+          child: ConstrainedBox(
+            constraints: BoxConstraints(
+              minHeight:
+                  MediaQuery.of(context).size.height -
+                  MediaQuery.of(context).padding.top -
+                  kToolbarHeight -
+                  48, // Account for AppBar and padding
             ),
-            SizedBox(height: 32),
+            child: IntrinsicHeight(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.account_circle,
+                    size: 80,
+                    color: Theme.of(context).primaryColor,
+                  ),
+                  SizedBox(height: 32),
 
-            SignInForm(onSignIn: _handleSignIn, isLoading: _isLoading),
+                  SignInForm(onSignIn: _handleSignIn, isLoading: _isLoading),
 
-            SizedBox(height: 16),
+                  SizedBox(height: 16),
 
-            StatusMessage(message: _statusMessage, color: _statusColor),
+                  StatusMessage(message: _statusMessage, color: _statusColor),
 
-            SizedBox(height: 24),
-            Text(
-              'Demo credentials:\n'
-              'Success: test@example.com / password123\n'
-              'Failure: Any other combination',
-              style: TextStyle(color: Colors.grey[600], fontSize: 12),
-              textAlign: TextAlign.center,
+                  Spacer(),
+
+                  Text(
+                    'Demo credentials:\n'
+                    'Success: test@example.com / password123\n'
+                    'Failure: Any other combination',
+                    style: TextStyle(color: Colors.grey[600], fontSize: 12),
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(height: 16),
+                ],
+              ),
             ),
-          ],
+          ),
         ),
       ),
+      resizeToAvoidBottomInset: true,
     );
   }
 }
