@@ -4,11 +4,14 @@ class SignInForm extends StatefulWidget {
   final Function(String email, String password) onSignIn;
   final bool isLoading;
 
-  const SignInForm({Key? key, required this.onSignIn, required this.isLoading})
-    : super(key: key);
+  const SignInForm({
+    super.key,
+    required this.onSignIn,
+    required this.isLoading,
+  });
 
   @override
-  _SignInFormState createState() => _SignInFormState();
+  State<SignInForm> createState() => _SignInFormState();
 }
 
 class _SignInFormState extends State<SignInForm> {
@@ -40,6 +43,7 @@ class _SignInFormState extends State<SignInForm> {
           keyboardType: TextInputType.emailAddress,
           enabled: !widget.isLoading,
         ),
+
         SizedBox(height: 16),
 
         TextField(
@@ -52,6 +56,7 @@ class _SignInFormState extends State<SignInForm> {
           obscureText: true,
           enabled: !widget.isLoading,
         ),
+
         SizedBox(height: 24),
 
         SizedBox(

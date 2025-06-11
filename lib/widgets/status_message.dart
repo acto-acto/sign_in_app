@@ -4,8 +4,7 @@ class StatusMessage extends StatelessWidget {
   final String message;
   final Color color;
 
-  const StatusMessage({Key? key, required this.message, required this.color})
-    : super(key: key);
+  const StatusMessage({super.key, required this.message, required this.color});
 
   @override
   Widget build(BuildContext context) {
@@ -16,9 +15,9 @@ class StatusMessage extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: color.withOpacity(0.1),
+        color: color.withAlpha((0.1 * 255).round()),
         borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: color.withOpacity(0.3)),
+        border: Border.all(color: color.withAlpha((0.1 * 255).round())),
       ),
       child: Text(
         message,

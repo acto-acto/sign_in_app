@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'screens/sign_in_screen.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(SignInApp());
 }
 
-class MyApp extends StatelessWidget {
+class SignInApp extends StatelessWidget {
+  const SignInApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
